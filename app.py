@@ -1,13 +1,10 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-import shap
-import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split, cross_val_score
-from sklearn.preprocessing import StandardScaler, RobustScaler
+from sklearn.preprocessing import RobustScaler
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
-from lime.lime_tabular import LimeTabularExplainer
 import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime
@@ -264,8 +261,6 @@ def main():
     # Advanced options
     with st.sidebar.expander("⚙️ Advanced Options"):
         threshold_adjust = st.slider("Risk Threshold Adjustment", 0.0, 1.0, 0.5, 0.05)
-        show_shap = st.checkbox("Show SHAP Analysis", True)
-        show_lime = st.checkbox("Show LIME Analysis", True)
     
     # Prediction button
     if st.sidebar.button("🔍 Analyze Health Status", type="primary", use_container_width=True):
@@ -338,57 +333,6 @@ def main():
         fig.update_layout(height=400, showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
         
-        # SHAP Analysis
-        if show_shap:
-            st.markdown("---")
-            st.subheader("🔎 SHAP Global Model Interpretation")
-            
-            with st.spinner("Computing SHAP values..."):
-                # Use a subset for faster computation
-                X_train_sample = X_train[:100]
-                explainer = shap.TreeExplainer(model)
-                shap_values = explainer.shap_values(X_train_sample)
-                
-                # SHAP summary plot
-                fig, ax = plt.subplots(figsize=(10, 6))
-                shap.summary_plot(shap_values, X_train_sample, 
-                                 feature_names=data.drop('Health Status', axis=1).columns,
-                                 show=False)
-                st.pyplot(fig)
-                plt.close()
-        
-        # LIME Analysis
-        if show_lime:
-            st.markdown("---")
-            st.subheader("🧠 LIME Local Explanation for Current Prediction")
-            
-            with st.spinner("Generating LIME explanation..."):
-                lime_explainer = LimeTabularExplainer(
-                    training_data=X_train,
-                    feature_names=data.drop('Health Status', axis=1).columns,
-                    class_names=["Healthy", "At Risk", "Diseased"],
-                    mode="classification",
-                    discretize_continuous=True
-                )
-                
-                explanation = lime_explainer.explain_instance(
-                    input_scaled[0],
-                    model.predict_proba,
-                    num_features=7,
-                    top_labels=3
-                )
-                
-                # Display LIME explanation
-                fig = explanation.as_pyplot_figure()
-                fig.set_size_inches(10, 6)
-                st.pyplot(fig)
-                plt.close()
-                
-                # Show feature contributions in a table
-                st.markdown("### Feature Contributions")
-                contributions = explanation.as_list(label=prediction)
-                contrib_df = pd.DataFrame(contributions, columns=['Feature', 'Contribution'])
-                st.dataframe(contrib_df, use_container_width=True)
         
         # Recommendations
         st.markdown("---")
