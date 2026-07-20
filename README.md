@@ -216,7 +216,7 @@ streamlit run app.py
 
 ### Feature Importance
 
-![Feature Importance](assets/feature_importance.png)
+![Feature Importance](assets/feature.png)
 
 
 ## 💡 Applications
