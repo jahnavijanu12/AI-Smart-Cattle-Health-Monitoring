@@ -150,10 +150,10 @@ AI-Smart-Cattle-Health-Monitoring
 ├── .gitignore
 │
 └── assets
-    ├── logo.png
-    ├── home_page.png
-    └── prediction_page.png
-```
+    ├── home.png
+    └── prediction.png
+    └── feature.png
+
 
 ## ▶ Installation
 
