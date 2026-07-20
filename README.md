@@ -208,13 +208,11 @@ streamlit run app.py
 
 ![Home](assets/home.png)
 
----
 
 ### Prediction Result
 
 ![Prediction](assets/prediction.png)
 
----
 
 ### Feature Importance
 
