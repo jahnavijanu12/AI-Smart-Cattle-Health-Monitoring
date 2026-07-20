@@ -240,10 +240,4 @@ streamlit run app.py
 - Farmer Notification System
 
 
-<<<<<<< HEAD
-=======
 
-Email: your_email@example.com
-
-
->>>>>>> 287ab96cca24cba0e89d6d6f671652ca141008bd
