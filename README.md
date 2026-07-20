@@ -240,11 +240,3 @@ streamlit run app.py
 - Farmer Notification System
 
 
-
-Email: your_email@example.com
-
----
-
-## ⭐ If you like this project
-
-Please consider giving this repository a ⭐ on GitHub.
