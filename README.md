@@ -11,6 +11,10 @@ This project provides an intelligent decision support system that predicts the h
 
 The application offers an interactive web interface where users can enter cattle health parameters and instantly receive prediction results along with risk assessment and recommendations.
 
+## 🌐 Live Demo
+
+🔗 https://ai-smart-cattle-health-monitoring-rrysf5kmsjsv5dwfawsnv2.streamlit.app/
+
 
 ## 🎯 Objectives
 
@@ -240,6 +244,4 @@ streamlit run app.py
 - Farmer Notification System
 
 
-## 🌐 Live Demo
 
-🔗 https://ai-smart-cattle-health-monitoring-rrysf5kmsjsv5dwfawsnv2.streamlit.app/
