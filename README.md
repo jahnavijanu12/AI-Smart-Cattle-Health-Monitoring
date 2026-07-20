@@ -240,4 +240,6 @@ streamlit run app.py
 - Farmer Notification System
 
 
+## 🌐 Live Demo
 
+🔗 https://ai-smart-cattle-health-monitoring-rrysf5kmsjsv5dwfawsnv2.streamlit.app/
